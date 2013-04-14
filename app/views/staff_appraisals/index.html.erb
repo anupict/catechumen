@@ -31,6 +31,7 @@
 			
 
 			<td width=10px><%= link_to image_tag("document.png",	:border => 0, :title => 'Show'), :action => 'show', :id => appraised %></td>
+<<<<<<< HEAD
 			<td width=10px>
 			<% if appraised.edit_icon != "noedit" %>
 				<%= link_to image_tag("#{appraised.edit_icon}", 		:border => 0, :title => "#{appraised.evaluation_status}"), :action => 'edit', :id => appraised %>
@@ -43,6 +44,15 @@
 				<% if appraised.is_complete == true %>
 				<%= link_to image_tag("printer.png", :border => 0, :title => 'Print'), :action => 'appraisal_form', :id => appraised %>
 				<% end -%></td>
+=======
+		<% if appraised.is_complete != true %>
+		    <td width=10px>
+				<%= link_to image_tag("edit.png", 			:border => 0, :title => 'Edit'), :action => 'edit', :id => appraised %></td>
+			<% else %>
+			<td width=10px>
+				<%= link_to image_tag("printer.png", :border => 0, :title => 'Print'), :action => 'appraisal_form', :id => appraised %></td>
+		<% end %>
+>>>>>>> 44ba0a00fcc8d62a4b1f357a7553da490f49dc49
 	    <td width=10px><%= link_to image_tag("delete.png", 		:border => 0, :title => 'Delete'), appraised, :confirm => 'Are you sure?', :method => :delete %></td>
 	  </tr>
 		<% end %>

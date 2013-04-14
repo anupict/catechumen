@@ -22,6 +22,9 @@ class StaffAppraisal < ActiveRecord::Base
   validates_uniqueness_of :evaluation_year, :scope => :staff_id, :message => "Your evaluation for this year already exists"
   
   
+  has_many :trainneeds, :foreign_key => 'evaluation_id', :dependent => :destroy
+  accepts_nested_attributes_for :trainneeds, :reject_if => lambda { |a| a[:name].blank? }
+  
   #before logic
   def set_to_nil_where_false
     if is_skt_submit != true

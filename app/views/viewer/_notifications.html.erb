@@ -14,8 +14,13 @@
 	<% end %>
 		
 	<!-- Notification for Appraisal Request -->
+<<<<<<< HEAD
 	<% me_ppp = StaffAppraisal.count(:all, :conditions => ["eval1_by=? AND is_submit_for_evaluation =? AND is_submit_e2 IS ?", User.current_user.staff_id, true, nil]) %>
   <% me_ppk = StaffAppraisal.count(:all, :conditions => ["eval2_by=? AND is_submit_e2 =? AND is_complete IS ?", User.current_user.staff_id, true, nil]) %>
+=======
+	<% me_ppp = StaffAppraisal.count(:all, :conditions => ["evaluation1_by=? AND submit_for_evaluation1 =? AND submit_for_evaluation2  IS ?", User.current_user.staff_id, true, nil]) %>
+	<% me_ppk = StaffAppraisal.count(:all, :conditions => ["evaluation2_by=? AND submit_for_evaluation2 =? AND is_complete IS NULL", User.current_user.staff_id, true]) %>
+>>>>>>> 44ba0a00fcc8d62a4b1f357a7553da490f49dc49
 	<% me_eval = me_ppp + me_ppk %>
 	<% if me_eval > 0 %>
     <%= me_eval %> <%= link_to "Staff appraisal for processing", { :controller => "staff_appraisals", :action => "index" } %><br>

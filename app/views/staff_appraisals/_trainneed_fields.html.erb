@@ -1,4 +1,5 @@
 <div class="fields">
+<<<<<<< HEAD
 	<table width=90%>
 		<tr>
 			<td width=45%><%= f.text_field :name, :size => 50, :placeholder => 'Enter details of training needed' %></td>
@@ -6,5 +7,11 @@
 			<td width=10%><%= link_to_remove_fields image_tag("delete.png", :border => 0, :title => 'Remove'), f %></td>
 		</tr>
 	</table>
+=======
+ | <%= f.text_field :name, :size => 50, :placeholder => 'Enter details of training needed' %>
+ | <%= f.text_field :reason, :size => 50, :placeholder => 'Enter reason' %>
+
+	<%= link_to_remove_fields image_tag("delete.png", :border => 0, :title => 'Remove'), f %>     
+>>>>>>> 44ba0a00fcc8d62a4b1f357a7553da490f49dc49
 </div>
 

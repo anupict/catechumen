@@ -16,6 +16,7 @@
 
 <div class="tlist">
 	  <table width=100%>
+<<<<<<< HEAD
 			  <tr>
 				  <th>Book ID</th>
 	        <th>ISBN No</th>
@@ -42,6 +43,24 @@
 				<td><%=h librarytransaction.accession.book.orderno unless librarytransaction.accession_id.blank?%></td>
 				<td><%=h librarytransaction.returnduedate.strftime('%d %b %Y') %></td>
 		    <td><%=h librarytransaction.returneddate %></td>
+=======
+			<tr>
+				<td  colspan=12>
+				<% permitted_to? :manage, :librarytransactions do %>
+					<%= link_to image_tag("book_go.png", :border => 0, :title => 'New Library Transaction') + "New Loan", new_librarytransaction_path %>
+				<% end %>
+				</th></td>
+			</tr>
+		  <tr>
+			  <th>Book ID</th>
+        <th>ISBN No</th>
+   		  <th><%= t 'book.title' %></th>
+		    <th><%= t 'librarytransaction.borrower' %></th>
+		    <th>Class No</th>
+				<th> No</th>
+		    <th><%= t 'librarytransaction.duedate' %></th>
+		    <th><%= t 'librarytransaction.returneddate' %></th>
+>>>>>>> 44ba0a00fcc8d62a4b1f357a7553da490f49dc49
 				<% permitted_to? :manage, :librarytransactions do %>
 				<td width=10px>				  
 						<% if librarytransaction.extended != true && librarytransaction.returned != true %>

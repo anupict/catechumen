@@ -28,4 +28,59 @@
 			</tr>
 			<% end -%>
 		</table>
+<<<<<<< HEAD
 </fieldset>
+=======
+</fieldset>
+
+<fieldset>
+	<legend><%= t 'evaluation.form.title_part2b' %></legend>
+		<table width=100% >
+			<tr>
+				<td class="leftcol" colspan=2><%= t 'evaluation.form.label_003' %></td>
+			</tr>
+			<tr>
+		    <td colspan=2>
+							<table width=90%>
+								<tr>
+									<th>Name</th>
+									<th>Type</th>
+									<th>Date</th>
+									<th>Duration</th>
+								</tr>
+								<% for ptdo in Ptdo.find(:all, :conditions => ['staff_id = ?', @staff_appraisal.appraised]) %>
+								<tr>
+									<td><%= ptdo.ptschedule.ptcourse.name %></td>
+									<td><%= (Ptcourse::COURSE_TYPE.find_all{|disp, value| value == ptdo.ptschedule.ptcourse.course_type}).map {|disp, value| disp} %></td>
+									<td><%= l(ptdo.ptschedule.start) %></td>
+									<td><%= ptdo.ptschedule.ptcourse.duration %> Days</td></tr>
+								<% end -%>
+							</table></td>
+			</tr>
+			<!--  TODO : Training that is requested but not approved
+
+						<tr>
+							<td class="leftcol" colspan=2><%= t 'evaluation.form.label_004' %></td>
+						</tr>-->
+			
+						<tr>
+							<td class="leftcol" colspan=2><%= t 'evaluation.form.label_004' %></td>
+						</tr>
+						<tr>
+					    <td colspan=2>
+										<table width=90%>
+											<tr>
+												<th>Activity</th>
+												<th>Reason</th>
+											</tr>
+											<% for trainneed in @staff_appraisal.trainneeds %>
+											<tr>
+												<td><%= trainneed.name %></td>
+												<td><%= trainneed.reason %></td>
+											</tr>
+											<% end -%>
+										</table></td>
+						</tr>
+		</table>
+</fieldset>
+>>>>>>> 44ba0a00fcc8d62a4b1f357a7553da490f49dc49

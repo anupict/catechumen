@@ -56,7 +56,86 @@
 </div>
 
 <P CLASS="breakhere">
+<<<<<<< HEAD
 <div class='A4potrait_<%= "#{@staff_appraisal.person_type}" %>'><br />
+=======
+
+<div class="A4potrait_green">
+
+	<div class="bahagian">
+		<H4>BAHAGIAN II - KEGIATAN DAN SUMBANGAN DI LUAR TUGAS RASMI/LATIHAN</H4>
+		<H5><i>(Diisi oleh PYD)</i></H5>
+		<BR/><BR/>
+		<H4>1.&nbsp;&nbsp;KEGIATAN DAN SUMBANGAN DI LUAR TUGAS RASMI</H4>
+		<P>Senaraikan kegiatan dan sumbangan di luar tugas rasmi seperti sukan/pertubuhan/sumbangan kreatif di peringkat 
+			 Komuniti/Jabatan/Daerah/Negeri/Negara/Antarabangsa yang berfaedah kepada Organisasi/Komuniti/Negara pada tahun yang dinilai.</P><BR/>
+
+	  <table class="centre">
+	    <tr>
+	      <th>Senarai kegiatan/aktiviti/sumbangan</th>
+	      <th>Peringkat kegiatan/aktiviti/sumbangan<br />(nyatakan jawatan atau pencapaian)</th>
+	    </tr>
+			<% for evactivity in @staff_appraisal.evactivities %>
+	    <tr>
+	      <td width="303" height="40"><%= evactivity.evactivity %></td>
+	      <td width="309" ><p align="center"><%= (Evactivity::EVACT.find_all{|disp, value| value == evactivity.actlevel}).map {|disp, value| disp} %></p>
+	      <div align="justify"> </div></td>
+	    </tr>
+	    <% end -%>
+		<% if @staff_appraisal.evactivities.count == 0 %>
+		<tr><td width="303" height="57">-</td><td width="309">-</td></tr>
+		<% end %>
+	  </table><br /><br />
+	
+	
+		<H4>2.&nbsp;&nbsp;LATIHAN</H4>
+		<ol><li>Senaraikan program latihan (seminar, kursus, bengkel dan lain-lain) yang dihadiri dalam tahun yang dinilai.</li></ol>
+		<table class="centre">
+	    <tr>
+	      <th height="48">Nama Latihan<br />(Nyatakan sijil jika ada)</th>
+	      <th>Tarikh/Tempoh</th>
+	      <th>Tempat</th>
+	    </tr>
+			<% for ptdo in Ptdo.find(:all, :conditions => ['staff_id = ?', @staff_appraisal.staff_id]) %>
+	    <tr>
+	      <td width="259" height="50"><%= ptdo.ptschedule.ptcourse.name %></td>
+	      <td width="161"><%= l(ptdo.ptschedule.start) %></td>
+	      <td width="217"><%= ptdo.ptschedule.location %></td>
+	    </tr>
+			<% end -%>
+		<% if Ptdo.find(:all, :conditions => ['staff_id = ?', @staff_appraisal.staff_id]).count == 0 %>	
+		<tr>
+			<td width="259" height="50">-</td>
+			<td width="161">-</td>
+			<td width="217">-</td>
+		</tr>
+		<% end %>
+	  </table><br />
+	
+		<ol start="2">
+			<li>Senaraikan latihan yang diperlukan.</li>
+		</ol>	
+		<table class="centre">
+	    <tr>
+	      <th>Nama/Bidang Latihan</td>
+	      <th>Sebab Diperlukan</td>
+	    </tr>
+	   	<% for trainneed in @staff_appraisal.trainneeds %>
+	    <tr>
+	      <td width="306" height="40"><%= trainneed.name %></td>
+	      <td width="343"><%= trainneed.reason %></td>
+	    </tr>
+		<% end -%>
+		<% if @staff_appraisal.trainneeds.count == 0 %>
+		<tr>
+	      <td width="306" height="97">-</td>
+	      <td width="343">-</td>
+	    </tr>
+		<% end %>
+	  </table><BR/>
+	
+		<P>Saya mengesahkan bahawa semua kenyataan di atas adalah benar.</P>
+>>>>>>> 44ba0a00fcc8d62a4b1f357a7553da490f49dc49
 		
 		<div class="bahagian">
 			<H4>BAHAGIAN II - KEGIATAN DAN SUMBANGAN DI LUAR TUGAS RASMI/LATIHAN</H4>
@@ -205,13 +284,21 @@
 	      <th>PPP (%)
 								<table class="box">
 		        			<tr>
+<<<<<<< HEAD
 		          			<td><%=h number_with_precision(@staff_appraisal.e1_total, :precision => 2) %></td>
+=======
+		          			<td><%=h number_with_precision(@staff_appraisal.total1,:precision => 2) %></td>
+>>>>>>> 44ba0a00fcc8d62a4b1f357a7553da490f49dc49
 		        			</tr>
 		      			</table></th>
 				<th>PPK	(%)
 								<table class="box">
 		        			<tr>
+<<<<<<< HEAD
 		          			<td><%=h number_with_precision(@staff_appraisal.e2_total,:precision => 2) %></td>
+=======
+		          			<td><%=h number_with_precision(@staff_appraisal.total2,:precision => 2) %></td>
+>>>>>>> 44ba0a00fcc8d62a4b1f357a7553da490f49dc49
 		        			</tr>
 		      			</table></td></th>
 				<th>MARKAH PURATA (%)<br /><span style="font-family:Arial;font-size:10px;font-weight:normal;">(untuk diisi oleh Urus Setia PPSM)</span>

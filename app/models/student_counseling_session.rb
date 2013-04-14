@@ -7,7 +7,11 @@ class StudentCounselingSession < ActiveRecord::Base
   belongs_to :student_discipline_case, :foreign_key => 'case_id'
   #belongs_to :created_by, :polymorphic => true,  :foreign_key => 'created_by'
   
+<<<<<<< HEAD
   validates_presence_of :student_id
+=======
+  validates_presence_of :student_id 
+>>>>>>> 44ba0a00fcc8d62a4b1f357a7553da490f49dc49
   
   
   #before logic

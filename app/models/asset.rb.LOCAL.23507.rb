@@ -16,7 +16,6 @@ class Asset < ActiveRecord::Base
   #belongs_to :subcategory,  :class_name => 'Assetcategory', :foreign_key => 'subcategory_id'
   
   
-<<<<<<< HEAD
   has_many :asset_defects
   has_one :asset_disposal       #Link to Model asset_disposals
   has_one :asset_loss        #Link to Model AssetLoss  
@@ -33,15 +32,6 @@ class Asset < ActiveRecord::Base
   def must_assign_if_loanable?
     bookable?
   end
-=======
-  has_one :disposal#s        #Link to Model Disposals
-  has_one :asset_loss        #Link to Model AssetLoss  
-  has_many :assettracks
-  #has_many :assetinassettrack,    :class_name => 'Assettrack', :foreign_key => 'asset_id' #Link to Model AssetTrack
-  has_many :assetnums
-  has_many :maints#, :dependent => :destroy
-  accepts_nested_attributes_for :maints, :allow_destroy => true, :reject_if => lambda { |a| a[:asset_id].blank? }
->>>>>>> 44ba0a00fcc8d62a4b1f357a7553da490f49dc49
   
  
   def save_my_vars
@@ -131,15 +121,9 @@ class Asset < ActiveRecord::Base
   named_scope :fixed,         :conditions =>  ["assettype =? ", 1]
   named_scope :maintainable,   :conditions =>  ["is_maintainable =? ", true]
   named_scope :inventory,     :conditions =>  ["assettype =? ", 2]
-<<<<<<< HEAD
   named_scope :disposal,      :conditions =>  ["is_disposed =? AND id not in (?)", true, AssetDisposal.find(:all, :select => :asset_id).map(&:asset_id)]
   named_scope :disposed,      :conditions =>  ["id in (?)", AssetDisposal.find(:all, :select => :asset_id).map(&:asset_id)]
   named_scope :disposal,      :conditions =>  ["is_disposed =? AND id not in (?)", true, AssetDisposal.find(:all, :select => :asset_id).map(&:asset_id)]
-=======
-  named_scope :disposal,      :conditions =>  ["mark_disposal =?",true]# AND id not in (?)", true, Disposal.find(:all, :select => :asset_id).map(&:asset_id)]
-  named_scope :disposed,      :conditions =>  ["id in (?)", Disposal.find(:all, :select => :asset_id).map(&:asset_id)]
-  #named_scope :disposal,      :conditions =>  ["mark_disposal =? AND id not in (?)", true, Disposal.find(:all, :select => :asset_id).map(&:asset_id)]
->>>>>>> 44ba0a00fcc8d62a4b1f357a7553da490f49dc49
   named_scope :markaslost,    :conditions =>  ["mark_as_lost =? AND id not in (?)", true, AssetLoss.find(:all, :select => :asset_id).map(&:asset_id)]
   named_scope :lost,          :conditions =>  ["id in (?)", AssetLoss.find(:all, :select => :asset_id).map(&:asset_id)]
 

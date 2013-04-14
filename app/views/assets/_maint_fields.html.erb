@@ -1,12 +1,17 @@
-<div class="fields">
+<div class="fields"><%= @index%>
 <table>	
 	<tr>
 	  <th colspan = 3>Maintenance</th>
   </tr>
 	<tr>
 		<td class="leftcol"><label for="staff_id">Performed By</label></td>
+<<<<<<< HEAD
 		<td><span class="addy"><%= f.collection_select :maintainer_id, Addbook.find(:all, :order => :name), :id, :name, :include_blank => true, :prompt => 'Maintained By' %></span></td>
 		<td rowspan=4><%= f.hidden_field :_destroy %>
+=======
+		<td><%= f.collection_select :maintainer_id, Addbook.find(:all), :id, :name, :include_blank => true, :prompt => 'Maintained By' %></td>
+		<td rowspan=4><%= f.hidden_field :asset_id, :value => @asset.id %><%= f.hidden_field :_destroy %>
+>>>>>>> 44ba0a00fcc8d62a4b1f357a7553da490f49dc49
 									<%= link_to_remove_fields image_tag("delete.png", :border => 0, :title => 'Remove'), f %></td>
 	</tr>
 	<tr>

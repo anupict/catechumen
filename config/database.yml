@@ -2,6 +2,7 @@
 #   gem install sqlite3-ruby (not necessary on OS X Leopard)
 development:
   adapter: postgresql
+<<<<<<< HEAD
   database: icms_jb
   host: localhost
   username: postgres
@@ -12,6 +13,9 @@ development:
 test:
   adapter: postgresql
   database: icms_test
+=======
+  database: icms_development6
+>>>>>>> 44ba0a00fcc8d62a4b1f357a7553da490f49dc49
   host: localhost
   username: postgres
   password: password
