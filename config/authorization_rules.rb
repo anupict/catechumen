@@ -118,6 +118,8 @@ authorization do
   
   role :staff_administrator do
      has_permission_on :staffs, :to => [:manage, :borang_maklumat_staff]
+     has_permission_on :attendances, :to => :manage
+     has_permission_on :staff_attendances, :to => :manage   #29Apr2013-refer routes.rb
   end
   
   role :finance_unit do
@@ -188,11 +190,12 @@ authorization do
   end
   
   role :disciplinary_officer do
-    has_permission_on :Student_discipline_cases, :to => :manage
+    has_permission_on :student_discipline_cases, :to => :manage
+    has_permission_on :student_counseling_sessions, :to => :feedback_referrer
   end
   
   role :student_counsellor do
-    has_permission_on :student_counseling_sessions, :to => :manage
+    has_permission_on :student_counseling_sessions, :to => [:manage, :feedback_referrer]
     has_permission_on :students, :to => :core
   end
   
